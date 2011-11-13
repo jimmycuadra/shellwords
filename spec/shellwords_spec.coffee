@@ -13,3 +13,13 @@ describe "Shellwords", ->
     it "splits double quoted phrases", ->
       results = shellwords.shellsplit '"foo bar" baz'
       (expect results).toEqual ["foo bar", "baz"]
+
+    it "respects escaped characters", ->
+      results = shellwords.shellsplit "foo\\ bar baz"
+      (expect results).toEqual ["foo bar", "baz"]
+
+    it "throws when quotes are mismatched", ->
+      fn = ->
+        shellwords.shellsplit "foo 'bar baz"
+
+      (expect fn).toThrow()
