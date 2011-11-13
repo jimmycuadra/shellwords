@@ -36,7 +36,7 @@ shellsplit = (line = "") ->
 
     throw new Error "Unmatched quote" if garbage?
 
-    field += (word or sq or (dq or escape).replace(/\\(?=.)/, ""))
+    field += (word or (sq or dq or escape).replace(/\\(?=.)/, ""))
 
     if seperator?
       words.push field
