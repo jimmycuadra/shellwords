@@ -14,7 +14,7 @@ scan = (string, pattern, callback) ->
 
   result
 
-shellsplit = (line = "") ->
+exports.split = (line = "") ->
   words = []
   field = ""
   scan line, ///
@@ -45,8 +45,3 @@ shellsplit = (line = "") ->
   words.push field if field
 
   words
-
-module.exports =
-  shellsplit: shellsplit
-  shellwords: shellsplit
-  split: shellsplit
