@@ -2,7 +2,7 @@
   "author": "Jimmy Cuadra <jimmy@jimmycuadra.com> (http://jimmycuadra.com/)",
   "name": "shellwords",
   "description": "Manipulate strings according to the word parsing rules of the UNIX Bourne shell.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/jimmycuadra/shellwords",
   "repository": {
     "type": "git",
@@ -12,12 +12,9 @@
   "scripts": {
     "test": "cake spec"
   },
-  "engines": {
-    "node": ">= 0.4"
-  },
   "dependencies": {},
   "devDependencies": {
-    "jasmine-node": "~1.0.12",
-    "nodewatch": "~0.0.4"
+    "jasmine-node": "~1.0.26",
+    "nodewatch": "~0.1.0"
   }
 }

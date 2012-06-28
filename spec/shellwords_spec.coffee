@@ -1,4 +1,4 @@
-shellwords = require "shellwords"
+shellwords = require "../src/shellwords"
 
 describe "Shellwords", ->
   describe "#split", ->
