@@ -26,6 +26,13 @@ describe "Shellwords", ->
       results = shellwords.split 'foo "bar\\ baz"'
       (expect results).toEqual ["foo", "bar baz"]
 
+    it "respects escaped quotes within quotes", ->
+      results = shellwords.split 'foo "bar\\" baz"'
+      (expect results).toEqual ['foo', 'bar" baz']
+
+      results = shellwords.split "foo 'bar\\' baz'"
+      (expect results).toEqual ["foo", "bar' baz"]
+
     it "throws on unmatched single quotes", ->
       fn = ->
         shellwords.split "foo 'bar baz"
