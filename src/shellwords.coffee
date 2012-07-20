@@ -22,7 +22,7 @@ exports.split = (line = "") ->
     (?:                       #
       ([^\s\\\'\"]+)          # Normal words
       |                       #
-      '([^\']*)'              # Stuff in single quotes
+      '((?:[^\'\\]|\\.)*)'    # Stuff in single quotes
       |                       #
       "((?:[^\"\\]|\\.)*)"    # Stuff in double quotes
       |                       #
