@@ -1,6 +1,6 @@
 # Shellwords
 
-Shellwords provides a function to manipulate strings according to the word parsing rules of the UNIX Bourne shell.
+Shellwords provides functions to manipulate strings according to the word parsing rules of the UNIX Bourne shell. It is based on [the Ruby module of the same name](http://www.ruby-doc.org/stdlib-1.9.3/libdoc/shellwords/rdoc/Shellwords.html).
 
 ## Installation
 
@@ -9,8 +9,11 @@ Add "shellwords" to your `package.json` file and run `npm install`.
 ## Example
 
 ``` javascript
-var split = require("shellwords").split;
+var shellwords = require("shellwords");
 
-console.log(split("foo 'bar baz'"));
+shellwords.split("foo 'bar baz'");
 // ["foo", "bar baz"]
+
+shellwords.escape("What's up, yo?");
+// 'What\\\'s\\ up,\\ yo\\?'
 ```

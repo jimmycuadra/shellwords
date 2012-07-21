@@ -51,7 +51,5 @@ describe "Shellwords", ->
       (expect results).toEqual "foo\\ \\'\\\"\\'\\ bar"
 
     it "dummy escapes any multibyte chars", ->
-      # This describes current behavior originally
-      # taken from Ruby's Shellwords library
       results = shellwords.escape "あい"
       (expect results).toEqual "\\あ\\い"
