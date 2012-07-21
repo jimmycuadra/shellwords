@@ -45,3 +45,12 @@ exports.split = (line = "") ->
   words.push field if field
 
   words
+
+exports.escape = (str = "") ->
+  return "''" unless str?
+
+  # Shamelessly taken from:
+  # http://www.ruby-doc.org/stdlib-1.9.3/libdoc/shellwords/rdoc/Shellwords.html#method-c-shellescape
+
+  str.replace(/([^A-Za-z0-9_\-.,:\/@\n])/g, "\\$1").replace(/\n/g, "'\n'")
+

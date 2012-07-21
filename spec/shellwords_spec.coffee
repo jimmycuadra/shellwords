@@ -44,3 +44,14 @@ describe "Shellwords", ->
         shellwords.split 'foo "bar baz'
 
       (expect fn).toThrow()
+
+  describe "#escape", ->
+    it "escapes a string to be safe for shell command line", ->
+      results = shellwords.escape "foo '\"' bar"
+      (expect results).toEqual "foo\\ \\'\\\"\\'\\ bar"
+
+    it "dummy escapes any multibyte chars", ->
+      # This describes current behavior originally
+      # taken from Ruby's Shellwords library
+      results = shellwords.escape "あい"
+      (expect results).toEqual "\\あ\\い"
