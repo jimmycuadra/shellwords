@@ -12,6 +12,7 @@
   "scripts": {
     "test": "cake spec"
   },
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "jasmine-node": "~1.0.26",
