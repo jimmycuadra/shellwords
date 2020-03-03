@@ -30,15 +30,15 @@ exports.split = (line = "") ->
       |                       #
       (\S)                    # Garbage
     )                         #
-    (\s|$)?                 # Seperator
+    (\s|$)?                 # Separator
   ///, (match) ->
-    [raw, word, sq, dq, escape, garbage, seperator] = match
+    [raw, word, sq, dq, escape, garbage, separator] = match
 
     throw new Error "Unmatched quote" if garbage?
 
     field += (word or (sq or dq or escape).replace(/\\(?=.)/, ""))
 
-    if seperator?
+    if separator?
       words.push field
       field = ""
 
