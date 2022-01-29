@@ -17,3 +17,6 @@ shellwords.split("foo 'bar baz'");
 shellwords.escape("What's up, yo?");
 // 'What\\\'s\\ up,\\ yo\\?'
 ```
+## Legal
+
+shellwords is released under the MIT license. See `LICENSE`.

@@ -1,5 +1,5 @@
 {
-  "author": "Jimmy Cuadra <jimmy@jimmycuadra.com> (http://jimmycuadra.com/)",
+  "author": "Jimmy Cuadra <jimmy@jimmycuadra.com>",
   "name": "shellwords",
   "description": "Manipulate strings according to the word parsing rules of the UNIX Bourne shell.",
   "version": "0.1.1",
@@ -8,15 +8,32 @@
     "type": "git",
     "url": "git://github.com/jimmycuadra/shellwords.git"
   },
-  "main": "./lib/shellwords",
-  "files": ["lib"],
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "browser": "dist/umd/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
-    "test": "cake spec"
+    "prebrowser": "yarn run build",
+    "browser": "serve -l 3000",
+    "build": "rm -rf dist && rollup -c",
+    "test": "jest"
   },
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "jasmine-node": "~1.0.26",
-    "nodewatch": "~0.1.0"
+    "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/jest": "^27.4.0",
+    "babel-jest": "^27.4.6",
+    "jest": "^27.4.7",
+    "rollup": "^2.66.1",
+    "rollup-plugin-ts": "^2.0.5",
+    "serve": "^13.0.2",
+    "typescript": "^4.5.5"
   }
 }
