@@ -1,11 +1,12 @@
 {
   "extends": "./tsconfig",
   "compilerOptions": {
+    "emitDeclarationOnly": true,
     "declaration": true,
     "declarationDir": "dist",
     "declarationMap": true,
+    "noEmit": false,
     "rootDir": "src",
-    "outDir": "dist",
     "sourceMap": true
   },
   "include": ["src"]

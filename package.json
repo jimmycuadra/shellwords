@@ -10,17 +10,23 @@
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "browser": "dist/umd/index.js",
-  "types": "dist/index.d.ts",
+  "browser": "dist/browser/index.js",
+  "types": "dist/shellwords.d.ts",
   "files": [
     "dist",
     "src"
   ],
   "scripts": {
-    "prebrowser": "yarn run build",
     "browser": "serve -l 3000",
-    "build": "rm -rf dist && rollup -c",
-    "test": "jest"
+    "build": "rm -rf dist && yarn run build:browser && yarn run build:cjs && yarn run build:esm && yarn run tsc:build",
+    "build:browser": "esbuild --bundle src/shellwords.ts --outfile=dist/browser/index.js --sourcemap --sources-content=false --format=iife --global-name=shellwords",
+    "build:cjs": "esbuild --bundle src/shellwords.ts --outfile=dist/cjs/index.js --sourcemap --sources-content=false --format=cjs",
+    "build:esm": "esbuild --bundle src/shellwords.ts --outfile=dist/esm/index.js --sourcemap --sources-content=false --format=esm",
+    "prebrowser": "yarn run build",
+    "prepack": "yarn run build",
+    "prepublish": "yarn run build",
+    "test": "jest",
+    "tsc:build": "tsc -p tsconfig.build.json"
   },
   "license": "MIT",
   "dependencies": {},
@@ -30,9 +36,8 @@
     "@babel/preset-typescript": "^7.16.7",
     "@types/jest": "^27.4.0",
     "babel-jest": "^27.4.6",
+    "esbuild": "^0.14.14",
     "jest": "^27.4.7",
-    "rollup": "^2.66.1",
-    "rollup-plugin-ts": "^2.0.5",
     "serve": "^13.0.2",
     "typescript": "^4.5.5"
   }
