@@ -21,6 +21,12 @@ const scan = (
   return result;
 };
 
+/**
+ * Splits a string into an array of tokens in the same way the UNIX Bourne shell does.
+ *
+ * @param line A string to split.
+ * @returns An array of the split tokens.
+ */
 export const split = (line: string = "") => {
   const words = [];
   let field = "";
@@ -66,6 +72,12 @@ export const split = (line: string = "") => {
   return words;
 };
 
+/**
+ * Escapes a string so that it can be safely used in a Bourne shell command line.
+ *
+ * @param str A string to escape.
+ * @returns The escaped string.
+ */
 export const escape = (str: string = "") => {
   return str
     .replace(/([^A-Za-z0-9_\-.,:\/@\n])/g, "\\$1")
