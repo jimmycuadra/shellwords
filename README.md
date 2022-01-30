@@ -1,15 +1,47 @@
 # Shellwords
 
-Shellwords provides functions to manipulate strings according to the word parsing rules of the UNIX Bourne shell. It is based on [the Ruby module of the same name](http://www.ruby-doc.org/stdlib-1.9.3/libdoc/shellwords/rdoc/Shellwords.html).
+Shellwords provides functions to manipulate strings according to the word parsing rules of the UNIX Bourne shell. It is based on [the Ruby module of the same name](https://docs.ruby-lang.org/en/3.1/Shellwords.html).
 
 ## Installation
 
-Add "shellwords" to your `package.json` file and run `npm install`.
+With npm:
+
+```
+npm install shellwords
+```
+
+With Yarn:
+
+```
+yarn add shellwords
+```
+
+## API
+
+Shellwords exports the following functions, shown here in the TypeScript declaration file format.
+
+``` typescript
+/**
+ * Splits a string into an array of tokens in the same way the UNIX Bourne shell does.
+ *
+ * @param line A string to split.
+ * @returns An array of the split tokens.
+ */
+export declare const split: (line?: string) => string[];
+
+/**
+ * Escapes a string so that it can be safely used in a Bourne shell command line.
+ *
+ * @param str A string to escape.
+ * @returns The escaped string.
+ */
+export declare const escape: (str?: string) => string;
+```
 
 ## Example
 
-``` javascript
-var shellwords = require("shellwords");
+``` typescript
+import { escape, split } from "shellwords";
 
 shellwords.split("foo 'bar baz'");
 // ["foo", "bar baz"]
@@ -17,6 +49,7 @@ shellwords.split("foo 'bar baz'");
 shellwords.escape("What's up, yo?");
 // 'What\\\'s\\ up,\\ yo\\?'
 ```
+
 ## Legal
 
 shellwords is released under the MIT license. See `LICENSE`.
