@@ -19,7 +19,11 @@ const config = defineConfig([
         sourcemap: true,
       },
     ],
-    plugins: [ts()],
+    plugins: [
+      ts({
+        tsconfig: "./tsconfig.build.json",
+      }),
+    ],
   },
   {
     input,
@@ -29,7 +33,11 @@ const config = defineConfig([
       format: "umd",
       sourcemap: true,
     },
-    plugins: [ts()],
+    plugins: [
+      ts({
+        tsconfig: "./tsconfig.build.json",
+      }),
+    ],
   },
 ]);
 

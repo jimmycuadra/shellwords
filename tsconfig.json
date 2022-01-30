@@ -1,8 +1,5 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "declarationDir": "dist",
-    "declarationMap": true,
     "exactOptionalPropertyTypes": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
