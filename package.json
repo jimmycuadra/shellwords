@@ -2,7 +2,7 @@
   "author": "Jimmy Cuadra <jimmy@jimmycuadra.com>",
   "name": "shellwords",
   "description": "Manipulate strings according to the word parsing rules of the UNIX Bourne shell.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/jimmycuadra/shellwords",
   "repository": {
     "type": "git",
