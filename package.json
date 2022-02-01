@@ -16,6 +16,16 @@
     "dist",
     "src"
   ],
+  "keywords": [
+    "shellwords",
+    "shell",
+    "unix",
+    "bourne",
+    "bash",
+    "command line",
+    "ruby",
+    "stdlib"
+  ],
   "scripts": {
     "browser": "serve -l 3000",
     "build": "rm -rf dist && yarn run build:browser && yarn run build:cjs && yarn run build:esm && yarn run tsc:build",
