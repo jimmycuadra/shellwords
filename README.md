@@ -43,10 +43,10 @@ export declare const escape: (str?: string) => string;
 ``` typescript
 import { escape, split } from "shellwords";
 
-shellwords.split("foo 'bar baz'");
+split("foo 'bar baz'");
 // ["foo", "bar baz"]
 
-shellwords.escape("What's up, yo?");
+escape("What's up, yo?");
 // 'What\\\'s\\ up,\\ yo\\?'
 ```
 
