@@ -10,6 +10,12 @@ With npm:
 npm install shellwords
 ```
 
+With pnpm:
+
+```
+pnpm add shellwords
+```
+
 With Yarn:
 
 ```

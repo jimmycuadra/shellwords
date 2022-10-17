@@ -27,12 +27,12 @@ const scan = (
  * @param line A string to split.
  * @returns An array of the split tokens.
  */
-export const split = (line: string = "") => {
+export const split = (line = "") => {
   const words = [];
   let field = "";
   scan(
     line,
-    /\s*(?:([^\s\\\'\"]+)|'((?:[^\'\\]|\\.)*)'|"((?:[^\"\\]|\\.)*)"|(\\.?)|(\S))(\s|$)?/,
+    /\s*(?:([^\s\\'"]+)|'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)"|(\\.?)|(\S))(\s|$)?/,
     (match) => {
       const [_raw, word, sq, dq, escape, garbage, separator] = match;
 
@@ -78,8 +78,8 @@ export const split = (line: string = "") => {
  * @param str A string to escape.
  * @returns The escaped string.
  */
-export const escape = (str: string = "") => {
+export const escape = (str = "") => {
   return str
-    .replace(/([^A-Za-z0-9_\-.,:\/@\n])/g, "\\$1")
+    .replace(/([^A-Za-z0-9_\-.,:/@\n])/g, "\\$1")
     .replace(/\n/g, "'\n'");
 };
