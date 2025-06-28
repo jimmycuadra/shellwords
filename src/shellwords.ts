@@ -1,7 +1,7 @@
 const scan = (
   string: string,
   pattern: RegExp,
-  callback: (match: RegExpMatchArray) => void
+  callback: (match: RegExpMatchArray) => void,
 ) => {
   let result = "";
 
@@ -62,7 +62,7 @@ export const split = (line = "") => {
         words.push(field);
         field = "";
       }
-    }
+    },
   );
 
   if (field) {
@@ -83,3 +83,12 @@ export const escape = (str = "") => {
     .replace(/([^A-Za-z0-9_\-.,:/@\n])/g, "\\$1")
     .replace(/\n/g, "'\n'");
 };
+
+/**
+ * Builds a command line string from an argument list.
+ *
+ * @param array An array of string arguments.
+ * @returns The command line string.
+ */
+export const join = (array: string[]) =>
+  array.map((element) => escape(element)).join(" ");

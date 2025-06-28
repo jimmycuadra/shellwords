@@ -42,18 +42,29 @@ export declare const split: (line?: string) => string[];
  * @returns The escaped string.
  */
 export declare const escape: (str?: string) => string;
+
+/**
+ * Builds a command line string from an argument list.
+ *
+ * @param array An array of string arguments.
+ * @returns The command line string.
+ */
+export const join = (array: string[]) => string;
 ```
 
 ## Example
 
 ``` typescript
-import { escape, split } from "shellwords";
+import { escape, split, join } from "shellwords";
 
 split("foo 'bar baz'");
 // ["foo", "bar baz"]
 
 escape("What's up, yo?");
 // 'What\\\'s\\ up,\\ yo\\?'
+
+join(["What's", "up,", "gang?");
+// 'What\\\'s up, gang\\?'
 ```
 
 ## Legal

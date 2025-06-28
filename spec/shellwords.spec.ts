@@ -1,4 +1,4 @@
-import { escape, split } from "../src/shellwords";
+import { escape, join, split } from "../src/shellwords";
 
 describe("Shellwords", () => {
   describe("#split", () => {
@@ -50,6 +50,13 @@ describe("Shellwords", () => {
       const fn = () => split('foo "bar baz');
 
       expect(fn).toThrow();
+    });
+  });
+
+  describe("#join", () => {
+    it("escapes and joins each array element into a space-separated string", () => {
+      const results = join(["foo", "'\"'", "bar"]);
+      expect(results).toEqual("foo \\'\\\"\\' bar");
     });
   });
 
