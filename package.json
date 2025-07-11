@@ -18,7 +18,8 @@
       "require": "./dist/cjs/index.js",
       "import": "./dist/esm/index.js",
       "browser": "./dist/browser/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist",
