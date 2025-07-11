@@ -12,6 +12,14 @@
   "module": "dist/esm/index.js",
   "browser": "dist/browser/index.js",
   "types": "dist/shellwords.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/shellwords.d.ts",
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "browser": "./dist/browser/index.js"
+    }
+  },
   "files": [
     "dist",
     "src"
