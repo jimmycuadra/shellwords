@@ -11,7 +11,8 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "useUnknownInCatchVariables": true
+    "useUnknownInCatchVariables": true,
+    "types": ["jest"]
   },
   "include": ["src", "spec"]
 }
