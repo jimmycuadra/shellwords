@@ -27,14 +27,14 @@ const scan = (
  * @param line A string to split.
  * @returns An array of the split tokens.
  */
-export const split = (line = "") => {
+export const split = (line: string = "") => {
   const words = [];
   let field = "";
   scan(
     line,
-    /\s*(?:([^\s\\'"]+)|'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)"|(\\.?)|(\S))(\s|$)?/,
+    /\s*(?:([^\s\\'"]+)|'([^']*)'|"((?:[^"\\]|\\.)*)"|(\\.?)|(\S))(\s|$)?/,
     (match) => {
-      const [_raw, word, sq, dq, escape, garbage, separator] = match;
+      const [, word, sq, dq, escape, garbage, separator] = match;
 
       if (garbage != null) {
         throw new Error(`Unmatched quote: ${line}`);
@@ -42,12 +42,12 @@ export const split = (line = "") => {
 
       if (word) {
         field += word;
+      } else if (sq != null) {
+        field += sq;
       } else {
-        let addition;
+        let addition: string = "";
 
-        if (sq) {
-          addition = sq;
-        } else if (dq) {
+        if (dq) {
           addition = dq;
         } else if (escape) {
           addition = escape;

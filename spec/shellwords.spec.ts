@@ -22,9 +22,26 @@ describe("Shellwords", () => {
       expect(results).toEqual(["foo bar", "baz"]);
     });
 
-    it("respects escaped characters within single quotes", () => {
+    it("preserves backslashes within single quotes (POSIX: single quotes are fully literal)", () => {
       const results = split("foo 'bar\\ baz'");
-      expect(results).toEqual(["foo", "bar baz"]);
+      expect(results).toEqual(["foo", "bar\\ baz"]);
+    });
+
+    it("preserves multiple backslashes within single quotes", () => {
+      // actual string passed to split: 'a\\b'  (single-quoted, two backslashes)
+      const results = split("'a\\\\b'");
+      expect(results).toEqual(["a\\\\b"]);
+    });
+
+    it("preserves escaped double-quotes inside single quotes", () => {
+      // the original bug: only the first \" was unescaped, leaving later ones intact
+      const results = split(`'{"key":"\\"value\\""}'`);
+      expect(results).toEqual(['{"key":"\\"value\\""}']);
+    });
+
+    it("handles empty single-quoted string", () => {
+      const results = split("foo '' bar");
+      expect(results).toEqual(["foo", "", "bar"]);
     });
 
     it("respects escaped characters within double quotes", () => {
@@ -32,12 +49,14 @@ describe("Shellwords", () => {
       expect(results).toEqual(["foo", "bar baz"]);
     });
 
-    it("respects escaped quotes within quotes", () => {
-      let results = split('foo "bar\\" baz"');
+    it("respects escaped quotes within double quotes", () => {
+      const results = split('foo "bar\\" baz"');
       expect(results).toEqual(["foo", 'bar" baz']);
+    });
 
-      results = split("foo 'bar\\' baz'");
-      expect(results).toEqual(["foo", "bar' baz"]);
+    it("throws when single-quoted string contains apparent escaped quote (POSIX: no escapes in single quotes)", () => {
+      const fn = () => split("foo 'bar\\' baz'");
+      expect(fn).toThrow();
     });
 
     it("throws on unmatched single quotes", () => {
